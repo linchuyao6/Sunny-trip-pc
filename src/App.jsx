@@ -1,15 +1,20 @@
 import React, { memo } from 'react'
-import {useRoutes} from 'react-router-dom'
-import routes from '@/router/index'
+import { useRoutes } from 'react-router-dom'
+import routes from './router';
+import AppFooter from '@/components/app-footer/AppFooter';
+import AppHeader from './components/app-header/AppHeader';
+import { useScrollTop } from './hooks';
 
 const App = memo(() => {
+  useScrollTop()
+  
   return (
-    <div className="app">
-      <div className="header">header</div>
-      <div className="page">
+    <div>
+      <AppHeader />
+      <section className='page'>
         {useRoutes(routes)}
-      </div>
-      <div className="footer">footer</div>
+      </section>
+      <AppFooter />
     </div>
   )
 })
